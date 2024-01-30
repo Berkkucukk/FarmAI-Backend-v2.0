@@ -1,0 +1,5 @@
+torch
+torchviaion
+opencv-python
+PIL
+flask
