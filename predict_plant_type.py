@@ -78,7 +78,7 @@ def predict_type():
     class_label = class_label.replace("_"," ")
     print(folder_name)
     try:
-        if not os.path.exists(folder_name):
+        if not os.path.exists(f"plant/uploads/{folder_name}"):
             os.makedirs(f"plant/uploads/{folder_name}")
             print(f"{folder_name} has been created.")
         move_command = f"mv uploads/image.png plant/uploads/{folder_name}/{filename}.png"

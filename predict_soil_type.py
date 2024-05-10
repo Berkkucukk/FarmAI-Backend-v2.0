@@ -56,7 +56,7 @@ def predict_type():
     input_image = input_image.unsqueeze(0) 
 
    
-    data_dir = 'soil/Soil types/'
+    data_dir = 'soil/Soil_types/'
     dataset = datasets.ImageFolder(data_dir, transform=transform)
 
     with torch.no_grad():
@@ -72,14 +72,19 @@ def predict_type():
     print(f'Tahmin edilen sınıf: {class_label}')
     filename = generate_random_string(20)
     folder_name = class_label
-    folder_name = folder_name.replace(" ","\ ")
     print(folder_name)
+    folder_name = folder_name.replace(" ",'_')
+    print(folder_name)
+    print(f"mv uploads/image.png soil/uploads/{folder_name}/{filename}.png")
     try:
-        if not os.path.exists(folder_name):
+        if not os.path.exists(f"soil/uploads/{folder_name}"):
             os.makedirs(f"soil/uploads/{folder_name}")
             print(f"{folder_name} has been created.")
+        
         move_command = f"mv uploads/image.png soil/uploads/{folder_name}/{filename}.png"
         sub.run(move_command, shell=True)
     except:
         print("opps :(")
     return class_label
+
+
